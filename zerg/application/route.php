@@ -15,5 +15,5 @@ use think\Route;
 // Route::rule('路由表达式', '路由地址', '请求类型|类型2', '路由参数（数组）', '变量规则（数组）');
 
 // 使用类的 Route方法
-Route::rule('hello', 'sample/Test/hello');
-Route::get('hello', 'sample/Test/hello');       //便捷定义 get请求
+Route::rule('hello/:id', 'sample/Test/hello');
+// Route::get('hello/:id', 'sample/Test/hello');       //便捷定义 get请求
