@@ -25,8 +25,8 @@ class Banner
             'name' => 'require|max:10',
             'email' => 'email',
         ]);
-        
-        /** 
+
+        /**
          * 批量验证
          * $validate->batch()   返回对应多个不匹配验证结果
          */
