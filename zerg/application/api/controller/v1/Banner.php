@@ -28,6 +28,7 @@ class Banner
         //     'email' => 'email',
         // ]);
         $validate = new TestValidate(); // 封装的独立验证器
+
         /**
          * 批量验证
          * $validate->batch()   返回对应多个不匹配验证结果
