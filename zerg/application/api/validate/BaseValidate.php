@@ -2,9 +2,9 @@
 
 namespace app\api\validate;
 
-use think\Exception;
 use think\Request;
 use think\Validate;
+use app\lib\exception\ParameterException;
 
 class BaseValidate extends Validate
 {
@@ -16,14 +16,21 @@ class BaseValidate extends Validate
         $params = $request->param();
 
         // extends Validate 所有在 Validate里面，$this指向Validate本身
-        $result = $this->check($params);
-        // var_dump($params);
+        $result = $this->batch()->check($params);
         if (!$result) {
+            // 参数异常返回函数，并做 _construct构造函数变更返回信息（传参可选）
+            $e = new ParameterException([
+                'msg' => $this->error,
+                // 'code' => 400,
+                // 'errorCode' => 10002
+            ]);
+            // $e->msg = $this->error;  // 可直接对信息进行变更赋值，但是推荐使用构造函数进行变更
+            throw $e;
             // var_dump($validate->getError());
             // 原理同上，只是因为是Validate中，所有提供了erroe属性获取报错信息
-            $error = $this->error;
+            // $error = $this->error;
             // tp5内置的异常抛出
-            throw new Exception($error);
+            // throw new Exception($error);
         } else {
             return true;
         }

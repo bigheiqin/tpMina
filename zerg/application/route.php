@@ -12,4 +12,4 @@
 // 引入类
 use think\Route;
 // Route::rule('路由表达式', '路由地址', '请求类型|类型2', '路由参数（数组）', '变量规则（数组）');
-Route::get('banner/:id', 'api/v1.Banner/getBanner');
+Route::get('api/v1/banner/:id', 'api/v1.Banner/getBanner');
