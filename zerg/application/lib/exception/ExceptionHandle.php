@@ -13,9 +13,9 @@ class ExceptionHandle extends Handle
     private $code;
     private $msg;
     private $errorCode;
-    // 同时还要返回客户端当前请求的URL路径
-
-    public function render(Exception $ex)
+    
+    // *使用php内置基类\Exception，解决api路径错误返回的不规则异常信息
+    public function render(\Exception $ex)
     {
         /**
          * 两种异常的错误处理
@@ -49,7 +49,7 @@ class ExceptionHandle extends Handle
         return json($result, $this->code);
     }
 
-    private function recordErrorLog(Exception $ex)
+    private function recordErrorLog(\Exception $ex)
     {
         // 初始化日志
         Log::init([
