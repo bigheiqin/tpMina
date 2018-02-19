@@ -19,7 +19,13 @@ class Banner
 
         // 自定义验证规则，校验如果返回false，则此处被拦截，之后的代码都不被执行
         (new IDMustBePostiveINT())->goCheck();
-        $banner = BannerModel::getBannerByID($id);
+        /**
+         * 模型：（查询结果返回一个对象，而不是一个数组）
+         * 1.默认{模型名}对照{数据库表名}进行了操作
+         * 2.关联模型
+         */
+        $banner = BannerModel::get($id);
+        // $banner = BannerModel::getBannerByID($id);
         if(!$banner){
             throw new BannerMissException();
             // throw new Exception ('内部错误');
