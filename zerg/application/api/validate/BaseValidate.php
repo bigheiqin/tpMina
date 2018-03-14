@@ -20,9 +20,7 @@ class BaseValidate extends Validate
         if (!$result) {
             // 参数异常返回函数，并做 _construct构造函数变更返回信息（传参可选）
             $e = new ParameterException([
-                'msg' => $this->error,
-                // 'code' => 400,
-                // 'errorCode' => 10002
+                'msg' => $this->error
             ]);
             // $e->msg = $this->error;  // 可直接对信息进行变更赋值，但是推荐使用构造函数进行变更
             throw $e;
